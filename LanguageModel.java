@@ -82,8 +82,8 @@ public class LanguageModel {
             double ip = ((double) current.count / (double) counter);
             current.p = ip;
 
-            cpi += current.count;
-            current.cp = cpi / (double)counter;
+            cpi += current.p;
+            current.cp = cpi;
     
         }
 	}
@@ -118,7 +118,7 @@ public class LanguageModel {
         String firstwindow = initialText.substring(initialText.length() - windowLength);
         String result = initialText;
         
-        int i = initialText.length();
+        int i = 0;
         while (i < textLength) {
         
         List windowget = CharDataMap.get(firstwindow);
@@ -147,6 +147,35 @@ public class LanguageModel {
 	}
 
     public static void main(String[] args) {
+
+
+
+
+ List testList = new List();
+    String word = "cat";
+
+    System.out.println("Building list for the word: " + word);
+    
+    for (int i = 0; i < word.length(); i++) {
+        char c = word.charAt(i);
+        testList.update(c);
+       
+        System.out.println("After updating '" + c + "': " + testList);
+    }
+
+    System.out.println("\nFinal structure check:");
+    System.out.println("First element is: " + testList.get(0).chr);
+    System.out.println("Last element is: " + testList.get(testList.getSize() - 1).chr);
+
+    
+    
+
+
+
+
+
+
+
 
     int windowLength = Integer.parseInt(args[0]);
     String initialText = args[1];
